@@ -1,16 +1,10 @@
 class Zoo {
 
-    String name;
+    String zooName;
     String location;
 
-    Zoo(String name) {
-        this.name = name;
-        System.out.println("Created Zoo using String constructor");
-    }
-
-    Zoo(String name, String location) {
-        this.name = name;
+    Zoo(String zooName, String location) {
+        this.zooName = zooName;
         this.location = location;
-        System.out.println("Created Zoo using String, String constructor");
     }
 }
