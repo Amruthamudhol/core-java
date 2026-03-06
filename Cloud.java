@@ -36,14 +36,32 @@ class Cloud {
         System.out.println("Density: " + density);
         System.out.println("Type: " + type);
 
-        System.out.println("Droplet Size: " + droplet.size);
-        System.out.println("Droplet Count: " + droplet.count);
+        if(droplet != null)
+		{
+            droplet.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Droplet details not available");
+        }
 
-        System.out.println("Wind Speed: " + wind.speed);
-        System.out.println("Wind Direction: " + wind.direction);
+        if(wind != null)
+		{
+            wind.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Wind details not available");
+        }
 
-        System.out.println("Temperature: " + temperature.degree);
-        System.out.println("Unit: " + temperature.unit);
+        if(temperature != null)
+		{
+            temperature.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Temperature details not available");
+        }
 
         System.out.println("Location: " + location.place);
         System.out.println("Height: " + location.height);

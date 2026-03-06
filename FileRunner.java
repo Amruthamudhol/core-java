@@ -18,7 +18,19 @@ class FileRunner {
         System.out.println("Type: " + file.type);
 
         System.out.println("Folder: " + file.folder.folderName);
+		if(folder!=null){
+			folder.getdetails();
+		}
+		else{
+			System.out.println("folderis not there...");
+		}
         System.out.println("Owner: " + file.owner.ownerName);
+		if(owner!=null){
+			owner.printdetails();
+		}
+		else{
+			System.out.println("owener is not there...");
+		}
         System.out.println("Permission Read: " + file.permission.read);
         System.out.println("Created Date: " + file.dateInfo.createdDate);
         System.out.println("Location Path: " + file.location.path);

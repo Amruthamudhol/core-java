@@ -26,4 +26,26 @@ class Mouse {
         this.manufacturer = manufacturer;
         this.warranty = warranty;
     }
+	void getdetails(){
+		System.out.println("Mouse details, brand:" + this.brand + ", price:" + this.price + ", wireless:" + this.wireless);
+		
+	if(this.battery!=null)
+	{
+		this.battery.getinfo();
+	}
+	else
+	{
+		System.out.println("capacity is not there...");
+	}
+	if(this.sensor!=null)
+	{
+		this.sensor.printdetails();
+	}
+	else
+	{
+		System.out.println("sensortype is not there...");
+	}
+	
+		
+	}
 }

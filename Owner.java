@@ -7,4 +7,7 @@ class Owner {
         this.ownerName = ownerName;
         this.id = id;
     }
+	void printdetails(){
+		System.out.println("ownerName:"+this.ownerName +",id:"+id);
+	}
 }

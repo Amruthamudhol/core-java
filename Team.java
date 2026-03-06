@@ -7,4 +7,10 @@ class Team {
         this.teamName = teamName;
         this.players = players;
     }
+
+    void printDetails() {
+        System.out.println("Team Details:");
+        System.out.println("Team Name: " + this.teamName);
+        System.out.println("Number of Players: " + this.players);
+    }
 }

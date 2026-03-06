@@ -9,5 +9,6 @@ class MouseRunner {
         Warranty warranty = new Warranty(2, true);
 
         Mouse mouse = new Mouse( "Logitech", 999.0,true,6, "Black", battery, sensor, cable, manufacturer, warranty );
+		mouse.getdetails();
     }
 }

@@ -2,7 +2,7 @@ class LionRunner {
 
     public static void main(String[] args) {
 
-        Habitat habitat = new Habitat("Savannah", 500.5);
+        Habitat habitat = new Habitat(null, 500.5);
         Zoo zoo = new Zoo("Bannerghatta Zoo", "Bangalore");
         Food food = new Food("Meat", 10);
         Trainer trainer = new Trainer("Jack", 8);
@@ -18,9 +18,28 @@ class LionRunner {
         System.out.println("Color: " + lion.color);
 
         System.out.println("Habitat: " + lion.habitat.place);
+		if(habitat!=null){
+			habitat.printDetails();
+		}
+		else{
+			System.out.println("habitat is not there...");
+			
+		}
         System.out.println("Zoo: " + lion.zoo.zooName);
+		if(zoo!=null){
+			zoo.printDetails();
+		}
+		else{
+			System.out.println("zoo is not there...");
+		}
         System.out.println("Food: " + lion.food.type);
         System.out.println("Trainer: " + lion.trainer.trainerName);
+		if(trainer!=null){
+			trainer.getInfo();
+		}
+		else{
+			System.out.println("trainer is not there...");
+		}
         System.out.println("Health Condition: " + lion.health.condition);
     }
 }

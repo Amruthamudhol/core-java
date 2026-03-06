@@ -7,4 +7,9 @@ class Service {
         this.serviceType = serviceType;
         this.duration = duration;
     }
+
+    void printDetails() {
+        System.out.println("Service Type: " + serviceType);
+        System.out.println("Duration: " + duration);
+    }
 }

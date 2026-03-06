@@ -13,4 +13,12 @@ class Sound {
         this.frequency = frequency;
         this.tone = tone;
     }
+
+    void printDetails() {
+        System.out.println("Sound Type: " + this.type);
+        System.out.println("Volume: " + this.volume);
+        System.out.println("Loud: " + this.loud);
+        System.out.println("Frequency: " + this.frequency);
+        System.out.println("Tone: " + this.tone);
+    }
 }

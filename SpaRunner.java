@@ -8,8 +8,8 @@ class SpaRunner {
         Manager manager = new Manager("Ravi", 8);
         Timing timing = new Timing("10 AM", "9 PM");
 
-        Spa spa = new Spa("Relax Spa", 6, 1500.0, true, "Bangalore",therapist, service, equipment, manager, timing);
-                
+        Spa spa = new Spa("Relax Spa", 6, 1500.0, true, "Bangalore",
+                therapist, service, equipment, manager, timing);
 
         System.out.println("Spa Name: " + spa.name);
         System.out.println("Rooms: " + spa.rooms);
@@ -17,8 +17,24 @@ class SpaRunner {
         System.out.println("Open Today: " + spa.openToday);
         System.out.println("Location: " + spa.location);
 
-        System.out.println("Therapist: " + spa.therapist.therapistName);
-        System.out.println("Service: " + spa.service.serviceType);
+        if (spa.therapist != null)
+		{
+            spa.therapist.printDetails();
+        }
+		else 
+		{
+            System.out.println("Therapist details not available");
+        }
+
+        if (spa.service != null) 
+		{
+            spa.service.printDetails();
+        } 
+		else
+		{
+            System.out.println("Service details not available");
+        }
+
         System.out.println("Equipment: " + spa.equipment.equipmentName);
         System.out.println("Manager: " + spa.manager.managerName);
         System.out.println("Open Time: " + spa.timing.openTime);

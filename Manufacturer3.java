@@ -13,4 +13,12 @@ class Manufacturer3 {
         this.certified = certified;
         this.founder = founder;
     }
+
+    void printDetails() {
+        System.out.println("Manufacturer Name: " + this.name);
+        System.out.println("Country: " + this.country);
+        System.out.println("Established Year: " + this.establishedYear);
+        System.out.println("Certified: " + this.certified);
+        System.out.println("Founder: " + this.founder);
+    }
 }

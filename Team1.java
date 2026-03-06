@@ -1,4 +1,4 @@
-class Team1{
+class Team1 {
 
     String teamName;
     int players;
@@ -6,5 +6,11 @@ class Team1{
     Team1(String teamName, int players) {
         this.teamName = teamName;
         this.players = players;
+    }
+
+    void printDetails() {
+        System.out.println("Team Details:");
+        System.out.println("Team Name: " + this.teamName);
+        System.out.println("Number of Players: " + this.players);
     }
 }

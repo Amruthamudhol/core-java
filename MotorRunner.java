@@ -2,7 +2,7 @@ class MotorRunner {
 
     public static void main(String[] args) {
 
-        Battery1 battery = new Battery1("Lithium", 5000);
+        Battery1 battery = null;
         Controller controller = new Controller("CTRL-X", 220);
         CoolingSystem coolingSystem = new CoolingSystem("Air Cooling", true);
         Manufacturer1 manufacturer = new Manufacturer1("Bosch", "Germany");
@@ -17,10 +17,41 @@ class MotorRunner {
         System.out.println("Automatic: " + motor.automatic);
         System.out.println("Type: " + motor.type);
 
-        System.out.println("Battery Type: " + motor.battery.batteryType);
-        System.out.println("Controller Model: " + motor.controller.model);
-        System.out.println("Cooling System: " + motor.coolingSystem.coolingType);
-        System.out.println("Manufacturer: " + motor.manufacturer.name);
-        System.out.println("Warranty Years: " + motor.warranty.years);
+        if(motor.battery != null){
+            motor.battery.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Battery details not available");
+        }
+
+        if(motor.controller != null){
+            motor.controller.printDetails();
+        } 
+		else
+			{
+            System.out.println("Controller details not available");
+        }
+
+        if(motor.coolingSystem != null){
+            motor.coolingSystem.printDetails();
+        } 
+		else {
+            System.out.println("Cooling system details not available");
+        }
+
+        if(motor.manufacturer != null){
+            motor.manufacturer.printDetails();
+        }
+		else {
+            System.out.println("Manufacturer details not available");
+        }
+
+        if(motor.warranty != null){
+            motor.warranty.printDetails();
+        }
+		else {
+            System.out.println("Warranty details not available");
+        }
     }
 }

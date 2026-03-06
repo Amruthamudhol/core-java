@@ -7,4 +7,9 @@ class Therapist {
         this.therapistName = therapistName;
         this.experience = experience;
     }
+
+    void printDetails() {
+        System.out.println("Therapist Name: " + therapistName);
+        System.out.println("Experience: " + experience);
+    }
 }

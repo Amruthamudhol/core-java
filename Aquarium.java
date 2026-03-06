@@ -36,19 +36,44 @@ class Aquarium {
         System.out.println("Fish Count: " + fishCount);
         System.out.println("Shape: " + shape);
 
-        System.out.println("Fish Type: " + fish.type);
-        System.out.println("Fish Age: " + fish.age);
+        if(fish != null)
+		{
+            fish.printDetails();
+        } 
+		else {
+            System.out.println("Fish details not available");
+        }
 
-        System.out.println("Water Type: " + water.type);
-        System.out.println("Water Temperature: " + water.temperature);
+        if(water != null){
+            water.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Water details not available");
+        }
 
-        System.out.println("Filter Brand: " + filter.brand);
-        System.out.println("Filter Power: " + filter.power);
+        if(filter != null){
+            filter.printDetails();
+        }
+		else 
+		{
+            System.out.println("Filter details not available");
+        }
 
-        System.out.println("Light Type: " + light.type);
-        System.out.println("Light Watt: " + light.watt);
+        if(light != null){
+            light.printDetails();
+        }
+		else 
+		{
+            System.out.println("Light details not available");
+        }
 
-        System.out.println("Decoration Type: " + decoration.type);
-        System.out.println("Decoration Color: " + decoration.color);
+        if(decoration != null){
+            decoration.printDetails();
+        } 
+		else 
+		{
+            System.out.println("Decoration details not available");
+        }
     }
 }

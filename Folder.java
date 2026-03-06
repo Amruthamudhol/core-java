@@ -7,4 +7,7 @@ class Folder {
         this.folderName = folderName;
         this.numberOfFiles = numberOfFiles;
     }
+	void getdetails(){
+		System.out.println("folderName:"+this.folderName + ",numberOfFiles:"+this.numberOfFiles);
+	}
 }

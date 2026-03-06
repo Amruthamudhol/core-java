@@ -1,9 +1,9 @@
 class Bell {
 
-    String brand;
+    String name;
     double price;
     boolean electric;
-    int weight;
+    int quantity;
     String color;
 
     Sound sound;
@@ -12,14 +12,15 @@ class Bell {
     Manufacturer3 manufacturer;
     Warranty2 warranty;
 
-    Bell(String brand, double price, boolean electric, int weight, String color,
+    Bell(String name, double price, boolean electric, int quantity, String color,
          Sound sound, Material material, Size size, Manufacturer3 manufacturer, Warranty2 warranty) {
 
-        this.brand = brand;
+        this.name = name;
         this.price = price;
         this.electric = electric;
-        this.weight = weight;
+        this.quantity = quantity;
         this.color = color;
+
         this.sound = sound;
         this.material = material;
         this.size = size;
