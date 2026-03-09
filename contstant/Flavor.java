@@ -1,0 +1,3 @@
+enum Flavor {
+    CLASSIC, CHOCOLATE, VANILLA, BADAM
+}
