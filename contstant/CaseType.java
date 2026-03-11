@@ -1,3 +1,0 @@
-enum CaseType {
-    CIVIL, CRIMINAL, FAMILY, CORPORATE
-}
