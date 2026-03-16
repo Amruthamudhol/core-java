@@ -11,5 +11,8 @@ public class PetroleumRunner {
         petroleum.storeCompany("Hindustan Petroleum");
         petroleum.storeCompany("Reliance Petroleum");
         petroleum.storeCompany("ONGC");
+		
+		boolean result =  petroleum.searchCompany("HP");
+        System.out.println("Search Result: " + result);
     }
 }

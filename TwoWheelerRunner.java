@@ -28,5 +28,8 @@ public class TwoWheelerRunner {
         bike.storeModel("Yamaha FZ");
         bike.storeModel("TVS Ntorq");
 		bike.storeModel("TVS Ntorq");
+		
+		boolean result = bike.searchModel("TVS Apache");
+		System.out.println("Search result: " + result);
     }
 }

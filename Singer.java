@@ -28,5 +28,37 @@ class Singer {
         else {
             System.out.println("Array is null");
         }
+		System.out.println("----------------");
+    }
+	
+	boolean searchSinger(String searchName) {
+
+        System.out.println("Running searchSinger in Singer class");
+        System.out.println("Searching for: " + searchName);
+
+        if (singers != null) {
+
+            System.out.println("Array is not null, starting comparison");
+
+            for (String singer : singers) {
+
+                System.out.println("Comparing singer: " + singer + " with searchName: " + searchName);
+
+                if (singer != null && singer == searchName) {
+                    System.out.println("Match found: " + singer);
+                    return true;
+                }
+                else {
+                    System.out.println("No match for this singer");
+                }
+            }
+
+            System.out.println("Singer not found in the array");
+        } 
+        else {
+            System.out.println("Array is null");
+        }
+
+        return false;
     }
 }

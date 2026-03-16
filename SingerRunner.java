@@ -62,5 +62,9 @@ public class SingerRunner {
         singer.storeSinger("Hemanth Kumar");
         singer.storeSinger("Ajay Warrier");
         singer.storeSinger("Naveen Sajju");
+		
+		boolean result = singer.searchSinger("Atif Aslam");
+
+        System.out.println("Search Result: " + result);
     }
 }
