@@ -3,66 +3,154 @@ class TwoWheeler {
     String[] models;
     int currentIndex = 0;
 
+    // STORE
     void storeModel(String modelName) {
 
         System.out.println("Running storeModel method");
-        System.out.println("modelName:" + modelName);
+        System.out.println("Model Name: " + modelName);
 
-        if (this.models != null) {
-
-            System.out.println("Array is not null");
+        if (models != null) {
 
             if (currentIndex < models.length) {
-
-                System.out.println("Index is within array length");
 
                 models[currentIndex] = modelName;
                 System.out.println(modelName + " stored at index " + currentIndex);
 
                 currentIndex++;
 
-                System.out.println("Next index value is: " + currentIndex);
-
-            } 
-            else {
+            } else {
                 System.out.println("Array is full");
             }
 
-        } 
-        else {
+        } else {
             System.out.println("Array is null");
         }
-		System.out.println("----------------------");
+
+        System.out.println("----------------------");
     }
 
-	boolean searchModel(String searchName) {
+    // SEARCH (FIXED)
+    boolean searchModel(String searchName) {
 
-    System.out.println("Running searchModel method");
-    System.out.println("Searching for: " + searchName);
+        System.out.println("Running searchModel method");
+        System.out.println("Searching for: " + searchName);
 
-    if (models != null) {
+        if (models != null) {
 
-        System.out.println("Array is not null, starting comparison...");
+            for (String model : models) {
 
-        for (String model : models) {
+                System.out.println("Checking: " + model);
 
-            System.out.println("Comparing model: " + model + " with searchName: " + searchName);
-
-            if (model != null && model == searchName) {
-                System.out.println("Match found! Model: " + model + " is equal to " + searchName);
-                return true;
-            }
-            else {
-                System.out.println("No match for this model");
+                if (model != null && model.equals(searchName)) {
+                    System.out.println("Match found: " + model);
+                    System.out.println("----------------------");
+                    return true;
+                }
             }
         }
 
-        System.out.println("Model not found in the array");
-    } 
-    else {
-        System.out.println("Array is null, cannot perform search");
+        System.out.println("Model not found");
+        System.out.println("----------------------");
+        return false;
     }
 
-    return false;
-	}
+    // UPDATE BY INDEX
+    boolean updateModel(int index, String newName) {
+
+        System.out.println("Running updateModel by index");
+
+        if (models != null && index >= 0 && index < currentIndex) {
+
+            System.out.println("Old Model: " + models[index]);
+
+            models[index] = newName;
+
+            System.out.println("Updated to: " + newName);
+            System.out.println("----------------------");
+            return true;
+        }
+
+        System.out.println("Invalid index");
+        System.out.println("----------------------");
+        return false;
+    }
+
+    // UPDATE BY NAME
+    boolean updateModel(String oldName, String newName) {
+
+        System.out.println("Running updateModel by name");
+
+        if (models != null) {
+
+            for (int i = 0; i < currentIndex; i++) {
+
+                System.out.println("Checking: " + models[i]);
+
+                if (models[i] != null && models[i].equals(oldName)) {
+
+                    System.out.println("Match found at index: " + i);
+
+                    models[i] = newName;
+
+                    System.out.println("Updated to: " + newName);
+                    System.out.println("----------------------");
+                    return true;
+                }
+            }
+        }
+
+        System.out.println("Model not found");
+        System.out.println("----------------------");
+        return false;
+    }
+
+    // DELETE BY INDEX
+    boolean deleteModel(int index) {
+
+        System.out.println("Running deleteModel by index");
+
+        if (models != null && index >= 0 && index < currentIndex) {
+
+            System.out.println("Deleting: " + models[index]);
+
+            models[index] = null;
+
+            System.out.println("Deleted successfully");
+            System.out.println("----------------------");
+            return true;
+        }
+
+        System.out.println("Invalid index");
+        System.out.println("----------------------");
+        return false;
+    }
+
+    // DELETE BY NAME
+    boolean deleteModel(String name) {
+
+        System.out.println("Running deleteModel by name");
+
+        if (models != null) {
+
+            for (int i = 0; i < currentIndex; i++) {
+
+                System.out.println("Checking: " + models[i]);
+
+                if (models[i] != null && models[i].equals(name)) {
+
+                    System.out.println("Match found at index: " + i);
+
+                    models[i] = null;
+
+                    System.out.println("Deleted successfully");
+                    System.out.println("----------------------");
+                    return true;
+                }
+            }
+        }
+
+        System.out.println("Model not found");
+        System.out.println("----------------------");
+        return false;
+    }
 }

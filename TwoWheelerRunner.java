@@ -27,9 +27,37 @@ public class TwoWheelerRunner {
         bike.storeModel("Honda Dio");
         bike.storeModel("Yamaha FZ");
         bike.storeModel("TVS Ntorq");
-		bike.storeModel("TVS Ntorq");
-		
-		boolean result = bike.searchModel("TVS Apache");
-		System.out.println("Search result: " + result);
+
+        System.out.println("================================");
+
+        boolean result = bike.searchModel("TVS Apache");
+        System.out.println("Search result: " + result);
+
+        System.out.println("================================");
+
+        boolean updateIndex = bike.updateModel(1, "Hero Splendor Plus");
+        System.out.println("Update by Index: " + updateIndex);
+
+        System.out.println("================================");
+
+        boolean updateName = bike.updateModel("Honda Activa", "Activa 6G");
+        System.out.println("Update by Name: " + updateName);
+
+        System.out.println("================================");
+
+        boolean deleteIndex = bike.deleteModel(3);
+        System.out.println("Delete by Index: " + deleteIndex);
+
+        System.out.println("================================");
+
+        boolean deleteName = bike.deleteModel("TVS Raider");
+        System.out.println("Delete by Name: " + deleteName);
+
+        System.out.println("================================");
+
+        System.out.println("Final Models List:");
+        for (String model : bike.models) {
+            System.out.println(model);
+        }
     }
 }
