@@ -205,4 +205,32 @@ class ProductStore {
 
 		System.out.println("------------------------------");
 	}
+	
+	void save(Product[] products) {
+
+    if (products != null) {
+
+        for (int i = 0; i < products.length; i++) {
+			if (products[i] != null && index < this.products.length && index < 10) {
+
+                this.products[index] = products[i];
+
+                System.out.print("Product stored at " + index + " -> ");
+                this.products[index].displayDetails();
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+                index++;
+
+            } else {
+                System.out.println("No space for more products ");
+                break;
+            }
+        }
+
+    } else {
+        System.out.println("Product array is null");
+    }
+}
+
+
 }

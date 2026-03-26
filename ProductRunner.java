@@ -582,5 +582,20 @@ class ProductRunner {
 		store.getAllByWarrantyYears(WarrantyYears.ONE);
 		store.getAllByWarrantyYears(WarrantyYears.TWO);
 		store.getAllByWarrantyYears(WarrantyYears.THREE);
+		
+		SaveArray saveArray = new SaveArray();  
+
+		Product[] products = new Product[10]; 
+
+		products[0] = new Product("Mixer","Prestige","12-01-2024",3500.0,
+				ProductType.HOME_APPLIANCE,"Reliance",
+				WarrantyYears.TWO,false,120,"India");
+
+		products[1] = new Product("Iron Box","Philips","20-02-2024",1800.0,
+				ProductType.HOME_APPLIANCE,"Amazon",
+				WarrantyYears.ONE,false,85,"India");
+
+		saveArray.save(products);   
+		;
     }
 }
