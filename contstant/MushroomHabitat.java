@@ -1,3 +1,0 @@
-enum MushroomHabitat {
-    WOODLAND, GRASSLAND, SWAMPLAND, MOUNTAIN
-}
