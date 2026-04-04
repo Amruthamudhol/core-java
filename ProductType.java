@@ -1,0 +1,3 @@
+enum ProductType{
+		GROCERY,ELECTRONICS,DAIRY
+}
