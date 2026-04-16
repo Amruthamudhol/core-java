@@ -1,8 +1,8 @@
 package com.xworkz.Chain;
 
 public class DesignerChain extends Chain{
-    String styleName;    // Extra variable 1
-    boolean limitedEdition; // Extra variable 2
+    String styleName;
+    boolean limitedEdition;
 
     DesignerChain(long serialNumber, float thickness, String[] patternList,
                   MetalType metal, Vendor vendorDetails,

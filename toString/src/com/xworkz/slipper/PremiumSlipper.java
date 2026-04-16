@@ -25,9 +25,5 @@ public class PremiumSlipper extends Slipper {
         System.out.println("Premium Cost: " + updatedCost);
     }
 
-    @Override
-    public String toString() {
-        return "PremiumSlipper [modelName=" + modelName + ", footSize=" + footSize + ", cost=" + cost + ", categoryType=" + categoryType + ", " +
-                "manufacturer=" + manufacturer + ", materialType=" + materialType + ", warrantyYears=" + warrantyYears + "]";
-    }
+
 }
