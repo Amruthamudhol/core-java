@@ -3,7 +3,7 @@ package com.xworkz.management.main;
 public class Address {
     public int no;
     public int pincode;
-    public State state;   // added reference
+    public State state;  
 
     public Address(int no, int pincode, State state) {
         this.no = no;
