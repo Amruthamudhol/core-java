@@ -1,7 +1,7 @@
-package com.xworkz.Remote;
+package com.xworkz.remote;
 
 public class User {
-    Remote remote;
+    private Remote remote;
 
     User(Remote remote) {
         this.remote = remote;
@@ -10,7 +10,8 @@ public class User {
     public void operateTV() {
         System.out.println("User is operating the TV");
 
-        if (remote != null) {
+        if (remote != null)
+        {
             remote.turnOn();
             remote.turnOff();
         }

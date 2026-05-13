@@ -2,7 +2,7 @@ package com.xworkz.menucard;
 
 public class BindedMenuCard implements MenuCard
 {
-    private BindedMenuCard() {
+    BindedMenuCard() {
     }
 
     public static BindedMenuCard createBindedMenuCard() {

@@ -1,12 +1,14 @@
-package com.xworkz.Remote;
+package com.xworkz.remote;
 
 public class Runner {
     public static void main(String[] args) {
 
-        Remote remote = new TataRemote();
+        Remote tata = new TataRemote();
+        User user1 = new User(tata);
+        user1.operateTV();
 
-        User user = new User(remote);
-
-        user.operateTV();
+        Remote lg = new LgRemote();
+        User user2 = new User(lg);
+        user2.operateTV();
     }
 }

@@ -1,13 +1,15 @@
 package com.xworkz.os;
 
 public class Dell {
-    OS os;
+    private OS os;
 
-    Dell(OS os) {
+    Dell(OS os)
+    {
         this.os = os;
     }
 
-    public void runSystem() {
+    public void runSystem()
+    {
         System.out.println("Running Dell system");
 
         if (os != null) {

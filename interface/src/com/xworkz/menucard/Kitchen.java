@@ -1,7 +1,7 @@
 package com.xworkz.menucard;
 
 public class Kitchen {
-    MenuCard menuCard;
+   private MenuCard menuCard;
 
     Kitchen(MenuCard menuCard) {
         this.menuCard = menuCard;

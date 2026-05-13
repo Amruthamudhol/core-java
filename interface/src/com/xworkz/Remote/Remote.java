@@ -1,4 +1,4 @@
-package com.xworkz.Remote;
+package com.xworkz.remote;
 
 public interface Remote {
     void turnOn();

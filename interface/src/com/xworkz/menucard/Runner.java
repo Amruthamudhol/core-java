@@ -3,10 +3,12 @@ package com.xworkz.menucard;
 public class Runner {
     public static void main(String[] args) {
 
-        MenuCard menu = BindedMenuCard.createBindedMenuCard();
+        MenuCard binded = new BindedMenuCard();
+        Kitchen kitchen1 = new Kitchen(binded);
+        kitchen1.serveFood();
 
-        Kitchen kitchen = new Kitchen(menu);
-
-        kitchen.serveFood();
+        MenuCard digital = new DigitalMenuCard();
+        Kitchen kitchen2 = new Kitchen(digital);
+        kitchen2.serveFood();
     }
 }

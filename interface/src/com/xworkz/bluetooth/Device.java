@@ -1,7 +1,7 @@
 package com.xworkz.bluetooth;
 
 public class Device {
-    Bluetooth bluetooth;
+    private Bluetooth bluetooth;
     Device(Bluetooth bluetooth) {
         this.bluetooth = bluetooth;
     }

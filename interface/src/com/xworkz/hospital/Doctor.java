@@ -1,7 +1,7 @@
 package com.xworkz.hospital;
 
 public class Doctor {
-    Hospital hospital;
+     private Hospital hospital;
 
     Doctor(Hospital hospital) {
         this.hospital = hospital;
