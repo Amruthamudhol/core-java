@@ -36,7 +36,8 @@ public class ExpiredProductDetailServiceImpl implements ExpiredProductDetailServ
         double price = dto.getPrice();
         if (price > 0) {
             System.out.println("valid Price");
-        } else {
+        }
+        else {
             System.err.println("Invalid Price");
             return false;
         }

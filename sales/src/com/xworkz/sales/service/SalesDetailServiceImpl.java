@@ -21,8 +21,7 @@ public class SalesDetailServiceImpl implements SalesDetailService {
         if (itemName != null && itemName.length() >= 3 && itemName.length() <= 100 && itemName.matches("[a-zA-Z ]+")) {
 
             System.out.println("Valid Item Name");
-        }
-        else {
+        } else {
             System.err.println("Invalid Item Name");
             return false;
         }

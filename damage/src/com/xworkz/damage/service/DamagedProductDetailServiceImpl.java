@@ -37,7 +37,8 @@ public class DamagedProductDetailServiceImpl implements DamagedProductDetailServ
         double productPrice = dto.getProductPrice();
         if (productPrice > 0) {
             System.out.println("Valid Product Price");
-        } else {
+        }
+        else {
             System.err.println("Invalid Product Price");
             return false;
         }

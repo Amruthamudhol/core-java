@@ -30,7 +30,8 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         double price = dto.getPrice();
         if (price > 0) {
             System.out.println("Valid Price");
-        } else {
+        }
+        else {
             System.err.println("invalid Price");
             return false;
         }

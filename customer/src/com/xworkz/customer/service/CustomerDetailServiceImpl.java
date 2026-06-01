@@ -21,8 +21,8 @@ public class CustomerDetailServiceImpl implements CustomerDetailService{
         if (customerName != null && customerName.length() >= 3 && customerName.length() <= 100 && customerName.matches("[a-zA-Z ]+"))
         {
             System.out.println("Valid Customer Name");
-        } else
-        {
+        }
+        else {
             System.err.println("Invalid Customer Name");
             return false;
         }
