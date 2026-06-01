@@ -3,12 +3,12 @@ package com.xworkz.sales.dto;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.Setter;
-
+@Getter
+@Setter
 
 public class SalesDetailDTO implements Serializable {
 
-    @Getter
-    @Setter
+
     private int salesNumber;
     private String itemName;
     private double totalAmount;

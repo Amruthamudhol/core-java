@@ -3,11 +3,13 @@ package com.xworkz.order.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
+
 public class OrderDetailDTO {
 
 
-    @Getter
-    @Setter
+
 
     private int orderId;
     private String customerName;
