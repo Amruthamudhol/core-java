@@ -1,8 +1,17 @@
 package com.xworkz.customer.service;
 
+import com.xworkz.customer.dao.CustomerDetailDAO;
 import com.xworkz.customer.dto.CustomerDetailDTO;
 
+
 public class CustomerDetailServiceImpl implements CustomerDetailService{
+    private  CustomerDetailDAO customerDetailDAO;
+
+    public CustomerDetailServiceImpl(CustomerDetailDAO customerDetailDAO)
+    {
+        this.customerDetailDAO= customerDetailDAO;
+    }
+
     @Override
     public boolean validateAndSave(CustomerDetailDTO dto) {
         System.out.println("Customer Details : " +dto);
@@ -44,6 +53,12 @@ public class CustomerDetailServiceImpl implements CustomerDetailService{
         {
             System.err.println("Invalid Address");
             return false;
+        }
+        System.out.println("all validations are complete");
+        if(this.customerDetailDAO!=null){
+            System.out.println("customerDetailDAO is not null, will save it");
+            this.customerDetailDAO.save(customerDetailDAO);
+
         }
 
         return true;

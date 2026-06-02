@@ -1,8 +1,13 @@
 package com.xworkz.damage.service;
 
+import com.xworkz.damage.dao.DamagedProductDetailDAO;
 import com.xworkz.damage.dto.DamagedProductDetailDTO;
 
 public class DamagedProductDetailServiceImpl implements DamagedProductDetailService{
+    private DamagedProductDetailDAO damagedProductDetailDAO;
+    public DamagedProductDetailServiceImpl(DamagedProductDetailDAO damagedProductDetailDAO){
+        this.damagedProductDetailDAO=damagedProductDetailDAO;
+    }
     @Override
     public boolean validateAndSave(DamagedProductDetailDTO dto) {
         System.out.println("Damaged Product Details are :" + dto);
@@ -51,6 +56,14 @@ public class DamagedProductDetailServiceImpl implements DamagedProductDetailServ
             System.err.println("Invalid Warehouse Location");
             return false;
         }
+
+        System.out.println("all validations are complete");
+        if(this.damagedProductDetailDAO!=null){
+            System.out.println("customerDetailDAO is not null, will save it");
+            this.damagedProductDetailDAO.save(damagedProductDetailDAO);
+
+        }
+
         return true;
     }
 }

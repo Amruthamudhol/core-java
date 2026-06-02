@@ -1,8 +1,13 @@
 package com.xworkz.sales.service;
 
+import com.xworkz.sales.dao.SalesDetailDAO;
 import com.xworkz.sales.dto.SalesDetailDTO;
 
 public class SalesDetailServiceImpl implements SalesDetailService {
+    private SalesDetailDAO salesDetailDAO;
+    public SalesDetailServiceImpl(SalesDetailDAO salesDetailDAO){
+    this.salesDetailDAO=salesDetailDAO;
+    }
 
     @Override
     public boolean validateAndSave(SalesDetailDTO dto) {
@@ -51,6 +56,14 @@ public class SalesDetailServiceImpl implements SalesDetailService {
             System.err.println("invalid Payment Mode");
             return false;
         }
-     return  true;
+
+        System.out.println("all validations are complete");
+        if(this.salesDetailDAO!=null){
+            System.out.println("salesDetailDAO is not null, will save it");
+            this.salesDetailDAO.save(salesDetailDAO);
+
+        }
+
+        return  true;
     }
 }

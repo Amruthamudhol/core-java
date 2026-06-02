@@ -1,8 +1,18 @@
 package com.xworkz.kmf.service;
 
+import com.xworkz.kmf.dao.KMFDetailDAO;
 import com.xworkz.kmf.dto.KMFDetailsDTO;
 
 public class KMFDetailsServiceImpl implements KMFDetailsService{
+
+
+    private  KMFDetailDAO kmfDetailsDAO;
+
+    public KMFDetailsServiceImpl(KMFDetailDAO kmfDetailsDAO)
+{
+    this. kmfDetailsDAO= kmfDetailsDAO;
+}
+
     @Override
     public boolean validateAndSave(KMFDetailsDTO dto) {
         System.out.println("KMF Details are :" + dto);
@@ -55,6 +65,11 @@ public class KMFDetailsServiceImpl implements KMFDetailsService{
         }
 
         System.out.println(" KMF Details are Valid");
+        if(this.kmfDetailsDAO !=null){
+            System.out.println("customerDetailDAO is not null, will save it");
+            this.kmfDetailsDAO.save(kmfDetailsDAO);
+
+        }
         return true;
     }
 }

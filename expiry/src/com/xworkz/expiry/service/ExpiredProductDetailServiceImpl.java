@@ -1,8 +1,15 @@
 package com.xworkz.expiry.service;
 
+import com.xworkz.expiry.dao.ExpiredProductDAO;
 import com.xworkz.expiry.dto.ExpiredProductDetailDTO;
 
 public class ExpiredProductDetailServiceImpl implements ExpiredProductDetailService{
+
+    public ExpiredProductDAO expiredProductDAO;
+
+    public ExpiredProductDetailServiceImpl(ExpiredProductDAO expiredProductDAO){
+        this.expiredProductDAO= expiredProductDAO;
+    }
     @Override
     public boolean validateAndSave(ExpiredProductDetailDTO dto) {
 
@@ -48,6 +55,13 @@ public class ExpiredProductDetailServiceImpl implements ExpiredProductDetailServ
         } else {
             System.err.println("invalid Company Name");
             return false;
+        }
+
+        System.out.println("all validations are complete");
+        if(this.expiredProductDAO!=null){
+            System.out.println("expiredProductDAO is not null, will save it");
+            this.expiredProductDAO.save(expiredProductDAO);
+
         }
         return true;
     }

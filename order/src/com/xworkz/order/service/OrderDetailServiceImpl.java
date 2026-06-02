@@ -1,8 +1,16 @@
 package com.xworkz.order.service;
 
+import com.xworkz.order.dao.OrderDetailDAO;
+import com.xworkz.order.dao.impl.OrderDetailDAOimpl;
 import com.xworkz.order.dto.OrderDetailDTO;
 
 public class OrderDetailServiceImpl implements OrderDetailService{
+    private OrderDetailDAO orderDetailDAO;
+
+    public  OrderDetailServiceImpl(OrderDetailDAO orderDetailDAO){
+        this.orderDetailDAO= orderDetailDAO;
+
+    }
     @Override
 
     public boolean validateAndSave(OrderDetailDTO dto) {
@@ -42,6 +50,12 @@ public class OrderDetailServiceImpl implements OrderDetailService{
         } else {
             System.err.println("invalid Quantity");
             return false;
+        }
+        System.out.println("all validations are complete");
+        if(this.orderDetailDAO!=null){
+            System.out.println("orderDetailDAOimplc is not null, will save it");
+            this.orderDetailDAO.save(orderDetailDAO);
+
         }
 
         return true;
