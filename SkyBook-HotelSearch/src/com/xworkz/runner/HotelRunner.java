@@ -1,6 +1,5 @@
 package com.xworkz.runner;
 
-
 import com.xworkz.dao.HotelDAO;
 import com.xworkz.dao.HotelDAOImpl;
 import com.xworkz.dto.HotelSearchDTO;
@@ -17,14 +16,9 @@ public class HotelRunner {
 
         HotelSearchService service = new HotelSearchServiceImpl(hotelDAO);
 
-        HotelSearchDTO dto = new HotelSearchDTO();
+        HotelSearchDTO dto = new HotelSearchDTO("Goa", LocalDate.of(2026, 6, 3), LocalDate.of(2026, 6, 4),
+                2, 1, "PNR12345");
 
-        dto.setDestination("Goa");
-        dto.setCheckInDate(LocalDate.of(2026, 6, 3));
-        dto.setCheckOutDate(LocalDate.of(2026, 6, 4));
-        dto.setAdults(2);
-        dto.setRooms(1);
         service.validateAndSearch(dto);
     }
-
 }

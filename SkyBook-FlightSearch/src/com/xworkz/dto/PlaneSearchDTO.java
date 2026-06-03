@@ -1,7 +1,7 @@
 package com.xworkz.dto;
 
 import java.time.LocalDate;
-import java.util.Currency;
+import com.xworkz.constants.Currency;
 import com.xworkz.constants.TripType;
 import lombok.*;
 

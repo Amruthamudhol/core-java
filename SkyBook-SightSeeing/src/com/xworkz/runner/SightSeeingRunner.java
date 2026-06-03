@@ -7,19 +7,16 @@ import com.xworkz.service.SightSeeingService;
 import com.xworkz.service.SightSeeingServiceImpl;
 
 import java.time.LocalDate;
+
 public class SightSeeingRunner {
+
     public static void main(String[] args) {
 
         SightSeeingDAO dao = new SightSeeingDAOImpl();
 
         SightSeeingService service = new SightSeeingServiceImpl(dao);
 
-        SightSeeingDTO dto = new SightSeeingDTO();
-
-        dto.setPlaceName("Mysore Palace");
-        dto.setTripDate(LocalDate.of(2026, 6, 3));
-
+        SightSeeingDTO dto = new SightSeeingDTO("Mysore Palace", LocalDate.of(2026, 6, 3));
         service.validateAndSearch(dto);
     }
-
 }

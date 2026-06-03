@@ -11,20 +11,11 @@ import java.time.LocalDate;
 
 public class CabSearchRunner {
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
 
-            CabDAO cabDAO = new CabDAOImpl();
-
-            CabSearchService cabService = new CabSearchServiceImpl(cabDAO);
-
-            CabSearchDTO dto = new CabSearchDTO();
-
-            dto.setTripType(TripType.CITY_TO_AIRPORT);
-            dto.setFrom("Bangalore");
-            dto.setTo("Kempegowda Airport");
-            dto.setPickupDate(LocalDate.of(2026, 6, 3));
-            dto.setPickupTime("11:00 AM");
-
-            cabService.validateAndSearch(dto);
-        }
+        CabDAO cabDAO = new CabDAOImpl();
+        CabSearchService cabService = new CabSearchServiceImpl(cabDAO);
+        CabSearchDTO dto = new CabSearchDTO(TripType.CITY_TO_AIRPORT, "Bangalore", "Kempegowda Airport", LocalDate.of(2026, 6, 3), "11:00 AM");
+        cabService.validateAndSearch(dto);
+    }
 }

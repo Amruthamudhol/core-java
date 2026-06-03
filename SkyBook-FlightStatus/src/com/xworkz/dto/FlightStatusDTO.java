@@ -11,9 +11,12 @@ import java.time.LocalDate;
 @Getter
 @ToString
 
+
 public class FlightStatusDTO {
     private FlightStatusType statusType;
     private String pnr;
     private String flightNumber;
     private LocalDate travelDate;
+
+
 }
