@@ -4,7 +4,7 @@ import com.xworkz.dto.PlaneSearchDTO;
 
 public class PlaneDAOimpl implements PlaneDAO{
     @Override
-    public boolean searnch(PlaneSearchDTO dto) {
+    public boolean search(PlaneSearchDTO dto) {
         System.out.println("search  in planeDAO ");
 
         System.out.println("Trip Type : " + dto.getTripType());

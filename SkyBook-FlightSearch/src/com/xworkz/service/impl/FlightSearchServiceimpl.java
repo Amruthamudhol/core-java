@@ -33,7 +33,7 @@ public class FlightSearchServiceimpl implements FlightSearchService {
 
                     System.out.println("DTO is valid");
 
-                    return this.planeDAO.searnch(dto);
+                    return this.planeDAO.search(dto);
                 }
 
                 System.err.println("DTO is invalid");
