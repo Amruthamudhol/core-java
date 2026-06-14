@@ -1,0 +1,116 @@
+package com.xworkz.job.dao;
+
+import com.xworkz.job.dto.JobPortalDTO;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class JobPortalDAOImpl  implements JobPortalDAO{
+    @Override
+    public boolean save(JobPortalDTO jobPortalDTO) {
+        System.out.println("Saving Candidate Details : " + jobPortalDTO);
+
+        boolean isSaved = false;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal_db", "root", "4AI22CS005");
+
+            String insertQuery = "insert into candidate_details(candidate_name,skill,company_name,expected_salary) values(?,?,?,?)";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+
+            preparedStatement.setString(1, jobPortalDTO.getCandidateName());
+            preparedStatement.setString(2, jobPortalDTO.getSkill());
+            preparedStatement.setString(3, jobPortalDTO.getCompanyName());
+            preparedStatement.setDouble(4, jobPortalDTO.getExpectedSalary());
+
+            boolean result = preparedStatement.execute();
+
+            if (!result) {
+                isSaved = true;
+                System.out.println("Data Saved Successfully");
+            }
+
+            preparedStatement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isSaved;
+    }
+
+    @Override
+    public boolean update(JobPortalDTO jobPortalDTO) {
+
+        System.out.println("Update Method : " + jobPortalDTO);
+
+        boolean isUpdated = false;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal_db", "root", "4AI22CS005");
+
+            String updateQuery = "update candidate_details set expected_salary=? where candidate_name=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setDouble(1, jobPortalDTO.getExpectedSalary());
+            preparedStatement.setString(2, jobPortalDTO.getCandidateName());
+
+            boolean result = preparedStatement.execute();
+
+            if (!result) {
+                isUpdated = true;
+                System.out.println("Data Updated Successfully");
+            }
+
+            preparedStatement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isUpdated;
+    }
+
+    @Override
+    public boolean delete(JobPortalDTO jobPortalDTO) {
+
+        System.out.println("Delete Method : " + jobPortalDTO);
+
+        boolean isDeleted = false;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal_db", "root", "4AI22CS005");
+
+            String deleteQuery = "delete from candidate_details where candidate_name=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+            preparedStatement.setString(1, jobPortalDTO.getCandidateName());
+
+            boolean result = preparedStatement.execute();
+
+            if (!result) {
+                isDeleted = true;
+                System.out.println("Data Deleted Successfully");
+            }
+
+            preparedStatement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isDeleted;
+    }
+}
