@@ -15,21 +15,34 @@ public class JobPortalRunner {
         saveDto.setSkill("Java Full Stack");
         saveDto.setCompanyName("Infosys");
         saveDto.setExpectedSalary(600000.0);
-
         boolean saveResult = dao.save(saveDto);
         System.out.println("Save Result : " + saveResult);
+
+        JobPortalDTO insertDto = new JobPortalDTO();
+
+        insertDto.setCandidateName("Ananya");
+        insertDto.setSkill("Python");
+        insertDto.setCompanyName("TCS");
+        insertDto.setExpectedSalary(500000.0);
+
+        boolean insertResult = dao.insert(insertDto);
+        System.out.println("Insert Result : " + insertResult);
+
 
         JobPortalDTO updateDto = new JobPortalDTO();
         updateDto.setCandidateName("Amruta");
         updateDto.setExpectedSalary(800000.0);
-
         boolean updateResult = dao.update(updateDto);
         System.out.println("Update Result : " + updateResult);
 
 
         JobPortalDTO deleteDto = new JobPortalDTO();
-        deleteDto.setCandidateName("Amruta");
+        deleteDto.setCandidateName("Ananya");
         boolean deleteResult = dao.delete(deleteDto);
         System.out.println("Delete Result : " + deleteResult);
+
+
+        dao = new JobPortalDAOImpl();
+        JobPortalDTO dto = dao.select("Amruta");
     }
 }

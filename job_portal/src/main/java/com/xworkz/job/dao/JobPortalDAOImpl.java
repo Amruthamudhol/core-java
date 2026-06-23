@@ -2,10 +2,7 @@ package com.xworkz.job.dao;
 
 import com.xworkz.job.dto.JobPortalDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JobPortalDAOImpl  implements JobPortalDAO{
     @Override
@@ -112,5 +109,76 @@ public class JobPortalDAOImpl  implements JobPortalDAO{
         }
 
         return isDeleted;
+    }
+
+
+    @Override
+    public boolean insert(JobPortalDTO jobPortalDTO) {
+
+        System.out.println("Saving Candidate Details : " + jobPortalDTO);
+        boolean isSaved = false;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal_db", "root", "4AI22CS005");
+            String insertQuery = "insert into candidate_details(candidate_name, skill, company_name, expected_salary) values(?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+
+            preparedStatement.setString(1, jobPortalDTO.getCandidateName());
+            preparedStatement.setString(2, jobPortalDTO.getSkill());
+            preparedStatement.setString(3, jobPortalDTO.getCompanyName());
+            preparedStatement.setDouble(4, jobPortalDTO.getExpectedSalary());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                isSaved = true;
+                System.out.println(" Saved Successfully");
+            }
+
+            preparedStatement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isSaved;
+    }
+    @Override
+    public JobPortalDTO select(String candidateName) {
+        System.out.println("Searching Candidate : " + candidateName);
+        JobPortalDTO jobPortalDTO = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jobportal_db", "root", "4AI22CS005");
+
+            String selectQuery = "select * from candidate_details where candidate_name=?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, candidateName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                jobPortalDTO = new JobPortalDTO();
+                jobPortalDTO.setCandidateName(resultSet.getString("candidate_name"));
+                jobPortalDTO.setSkill(resultSet.getString("skill"));
+                jobPortalDTO.setCompanyName(resultSet.getString("company_name"));
+                jobPortalDTO.setExpectedSalary(resultSet.getDouble("expected_salary"));
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        return jobPortalDTO;
     }
 }
