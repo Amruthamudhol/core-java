@@ -13,16 +13,15 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 
 public class SmartWatchDTO implements Serializable {
-    private int watchId;
     private String brand;
-    private String modelName;
+    private String model;
+    private String color;
     private double displaySize;
-    private int batteryCapacity;
-    private boolean gpsEnabled;
-    private boolean waterResistant;
+    private boolean hasGPS;
+    private boolean hasHeartRateMonitor;
+    private int batteryLifeDays;
     private double price;
-    private LocalDate launchDate;
     private String operatingSystem;
-
+    private LocalDate releaseDate;
 
 }
