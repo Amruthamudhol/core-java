@@ -383,5 +383,20 @@ public class InterfaceRunner {
         };
 
         electricity.consume(145.75f);
+
+        Modulus modulus = (int a, int b) -> {
+            return a % b;
+        };
+        System.out.println("Modulus: " + modulus.modulus(20, 3));
+
+        Square square = (int a) -> {
+            return a * a;
+        };
+        System.out.println("Square: " + square.square(8));
+
+        VoteEligibility voteEligibility = (int age) -> {
+            return age >= 18;
+        };
+        System.out.println("Eligible: " + voteEligibility.canVote(20));
         }
 }
