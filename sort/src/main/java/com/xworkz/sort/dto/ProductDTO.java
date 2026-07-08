@@ -9,7 +9,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-
 public class ProductDTO implements Serializable,Comparable<ProductDTO> {
     private int id;
     private String name;

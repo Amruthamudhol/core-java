@@ -11,7 +11,7 @@ public class ProductRunner {
 
         List<ProductDTO> list = new ArrayList<>();
 
-        list.add(new ProductDTO(103, "Mouse", "HP", 600, 20));
+        list.add(new ProductDTO(108, "Mouse", "HP", 600, 20));
         list.add(new ProductDTO(101, "Laptop", "Dell", 55000, 5));
         list.add(new ProductDTO(105, "Keyboard", "Logitech", 1200, 10));
         list.add(new ProductDTO(102, "Monitor", "Samsung", 9000, 8));
@@ -20,6 +20,7 @@ public class ProductRunner {
         Collections.sort(list);
 
         System.out.println("ProductDTO in ascending order based on id:");
+
         for (ProductDTO dto : list) {
             System.out.println(dto);
         }
