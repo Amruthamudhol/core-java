@@ -87,5 +87,5 @@ public class BookRunner {
         System.out.println("Size after clear: " + map.size());
         System.out.println("Is Empty: " + map.isEmpty());
     }
-    
+
 }
