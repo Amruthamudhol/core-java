@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Registration</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <style>
+        body{
+            background: linear-gradient(135deg,#f6d365,#fda085);
+            min-height:100vh;
+        }
+
+        .form-box{
+            max-width:700px;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        h2{
+            text-align:center;
+            color:#ff6f00;
+            font-weight:bold;
+            margin-bottom:25px;
+        }
+
+        .navbar{
+            box-shadow:0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .form-control:focus{
+            border-color:#ff9800;
+            box-shadow:0 0 8px #ff9800;
+        }
+
+        .btn-primary{
+            width:170px;
+        }
+
+        .btn-secondary{
+            width:170px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold" href="index.html">X-Workz</a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="hotel.html"> Hotel</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="recipe.html"> Recipe</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="vehicle.html"> Vehicle</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="event.html"> Event</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="trip.html"> Travel</a>
+                </li>
+
+            </ul>
+
+            <a href="index.html" class="btn btn-outline-light"> Home</a>
+
+        </div>
+    </div>
+</nav>
+
+<div class="form-box">
+
+    <h2> Vehicle Registration Form</h2>
+
+    <form action="vehicle" method="post">
+
+        <div class="mb-3">
+            <label class="form-label">Vehicle Number</label>
+            <input type="text" class="form-control" name="vehicleNo" >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Owner Name</label>
+            <input type="text" class="form-control" name="ownerName">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Vehicle Type</label>
+            <input type="text" class="form-control" name="vehicleType">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Registration Date</label>
+            <input type="date" class="form-control" name="regDate">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Insurance Valid Till</label>
+            <input type="date" class="form-control" name="insuranceDate">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fuel Type</label>
+            <select class="form-control" name="fuel">
+                <option value="">Select</option>
+                <option value="PETROL">Petrol</option>
+                <option value="DIESEL">Diesel</option>
+                <option value="CNG">CNG</option>
+                <option value="ELECTRIC">Electric</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+        <a href="index.html" class="btn btn-secondary">Back to Home</a>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

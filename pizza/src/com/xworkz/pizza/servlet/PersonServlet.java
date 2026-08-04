@@ -21,5 +21,8 @@ public class PersonServlet extends GenericServlet {
 
         String name = servletRequest.getParameter("name");
         System.out.println("Name : " + name);
+        System.out.println();
+
     }
+
 }
