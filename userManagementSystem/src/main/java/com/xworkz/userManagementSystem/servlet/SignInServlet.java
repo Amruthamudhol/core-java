@@ -1,6 +1,9 @@
 package com.xworkz.userManagementSystem.servlet;
 
 import com.xworkz.userManagementSystem.dto.SignInDTO;
+import com.xworkz.userManagementSystem.service.SignInService;
+import com.xworkz.userManagementSystem.service.SignInServiceImpl;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,11 +27,14 @@ public class SignInServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         System.out.println("User ID : " + userId);
-        System.out.println("Password : " + password);
 
         // DTO creation
         SignInDTO signInDTO = new SignInDTO(userId, password);
         req.setAttribute("signInDTO", signInDTO);
+
+       //invoking service
+        SignInService signInService = new SignInServiceImpl();
+        signInService.validateAndSave(signInDTO);
 
         // Success message
         String msg = userId + " signed in successfully..";

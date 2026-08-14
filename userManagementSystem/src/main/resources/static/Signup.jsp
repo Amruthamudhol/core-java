@@ -40,7 +40,7 @@
 
                     <label class="form-label">Password</label>
                     <input type="password"
-                           name="password"
+                    name="password"
                            class="form-control mb-3"
                            placeholder="Enter Password"
                            required>

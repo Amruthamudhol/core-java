@@ -3,11 +3,11 @@ package com.xworkz.userManagementSystem.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Getter
-@ToString
 @Setter
+
 public class SignupDTO {
     private String userId;
     private String email;
@@ -21,5 +21,11 @@ public class SignupDTO {
         this.confirmPassword = confirmPassword;
     }
 
-
+    @Override
+    public String toString() {
+        return "SignupDTO{" +
+                "userId='" + userId + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
