@@ -34,14 +34,22 @@ public class SignInServlet extends HttpServlet {
 
        //invoking service
         SignInService signInService = new SignInServiceImpl();
-        signInService.validateAndSave(signInDTO);
+        boolean saved = signInService.validateAndSave(signInDTO);
 
-        // Success message
-        String msg = userId + " signed in successfully..";
-        req.setAttribute("message", msg);
+        if(saved) {
+            String msg = userId + " signed in successfully..";
+            req.setAttribute("message", msg);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
+            dispatcher.forward(req, resp);
+        }
+        else {
+            String msg = userId + " signed in failed..";
+            req.setAttribute("message", msg);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
+            dispatcher.forward(req, resp);
+        }
 
-        // Servlet chaining
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
-        dispatcher.forward(req, resp);
+
+
     }
 }

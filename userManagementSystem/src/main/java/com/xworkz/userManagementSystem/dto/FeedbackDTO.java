@@ -1,12 +1,14 @@
 package com.xworkz.userManagementSystem.dto;
 
 
+import lombok.Getter;
 import lombok.ToString;
 
 import java.io.Serializable;
 
 
 @ToString
+@Getter
 public class FeedbackDTO implements Serializable {
     private String name;
     private String email;

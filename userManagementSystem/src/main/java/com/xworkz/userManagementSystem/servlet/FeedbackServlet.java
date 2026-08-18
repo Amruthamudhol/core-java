@@ -36,17 +36,28 @@ public class FeedbackServlet extends HttpServlet {
 
         //invoking service
         FeedbackService feedbackService = new FeedbackServiceImpl();
-        feedbackService.validateAndSave(feedbackDTO);
+        boolean saved=feedbackService.validateAndSave(feedbackDTO);
 
         // Servlet chaining
         req.setAttribute("feedbackDTO", feedbackDTO);
+        if(saved){
+            // Success message
+            String msg = name + " Feedback was sent Successfully..";
+            req.setAttribute("message", msg);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Feedback.jsp");
 
-        // Success message
-        String msg = name + " Feedback was sent Successfully..";
-        req.setAttribute("message", msg);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/Feedback.jsp");
+        }
+        else {
+            // Failure message
+            String msg = name + " Feedback was not sent Successfully..";
+            req.setAttribute("message", msg);
 
-        dispatcher.forward(req, resp);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Feedback.jsp");
+            dispatcher.forward(req, resp);
+        }
+
+
+
     }
 }

@@ -39,18 +39,26 @@ public class SignupServlet extends HttpServlet {
 
         // Invoke service
         SignupService signupService = new SignupServiceImpl();
-        signupService.validateAndSave(signupDTO);
+       boolean saved = signupService.validateAndSave(signupDTO);
 
         // Set DTO in request
         req.setAttribute("signupDTO", signupDTO);
+        if (saved) {
 
-        // Success message
-        String msg = userId + " Account created successfully..";
-        req.setAttribute("message", msg);
+            // Success message
+            String msg = userId + " Account created successfully..";
+            req.setAttribute("message", msg);
 
-        // Servlet chaining
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/Signup.jsp");
+            // Servlet chaining
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Signup.jsp");
+            dispatcher.forward(req, resp);
+        }else {
+            // Failure message
+            String msg = userId + " Account creation failed..";
+            req.setAttribute("message", msg);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Signup.jsp");
+            dispatcher.forward(req, resp);
+        }
 
-        dispatcher.forward(req, resp);
     }
 }
