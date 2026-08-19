@@ -24,28 +24,28 @@
                 <form action="signup" method="post">
                 <h3>${message}</h3>
 
-                    <label class="form-label">User ID</label>
+                    <label class="form-label">userId</label>
                     <input type="text"
                            name="userId"
                            class="form-control mb-3"
                            placeholder="Enter User ID"
                            required>
 
-                    <label class="form-label">Email</label>
+                    <label class="form-label">email</label>
                     <input type="email"
                            name="email"
                            class="form-control mb-3"
                            placeholder="Enter Email"
                            required>
 
-                    <label class="form-label">Password</label>
+                    <label class="form-label">password</label>
                     <input type="password"
                     name="password"
                            class="form-control mb-3"
                            placeholder="Enter Password"
                            required>
 
-                    <label class="form-label">Confirm Password</label>
+                    <label class="form-label">confirmPassword</label>
                     <input type="password"
                            name="confirmPassword"
                            class="form-control mb-3"
@@ -53,7 +53,7 @@
                            required>
 
                     <button type="submit" class="btn btn-primary w-100">
-                        Sign Up
+                        Signup
                     </button>
 
                 </form>
