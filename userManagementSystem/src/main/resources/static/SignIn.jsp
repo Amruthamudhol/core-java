@@ -22,7 +22,8 @@
             <div class="card-body">
 
                 <form action="signin" method="post">
-                <h3>${message}</h3>
+                <h3>Session User ID: ${sessionScope.userId}</h3>
+
 
                     <label class="form-label">User ID</label>
                     <input type="text"

@@ -56,7 +56,7 @@ public class SignupServlet extends HttpServlet {
             // Failure message
             String msg = userId + " Account creation failed..";
             req.setAttribute("message", msg);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/Signup.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
             dispatcher.forward(req, resp);
         }
 
