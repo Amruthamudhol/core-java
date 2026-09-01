@@ -2,10 +2,7 @@ package com.xworkz.userManagementSystem.dao;
 
 import com.xworkz.userManagementSystem.entity.SignupEntity;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import javax.persistence.*;
 
 public class SignupDAOimpl implements SignupDAO {
 
@@ -17,33 +14,41 @@ public class SignupDAOimpl implements SignupDAO {
 
         boolean isSaved = false;
 
+        EntityManagerFactory emf = null;
+        EntityManager em = null;
+        EntityTransaction et = null;
+
         try {
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_management_system", "root", "4AI22CS005");
-            System.out.println("Database connected successfully");
-            String insertQuery = "insert into signup(userid,email,password,confirmpassword) values(?,?,?,?)";
+            emf = Persistence.createEntityManagerFactory("user_management_system");
+            em = emf.createEntityManager();
+            et = em.getTransaction();
+            et.begin();
 
+            em.persist(signupEntity);
+            et.commit();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, signupEntity.getUserId());
-            preparedStatement.setString(2, signupEntity.getEmail());
-            preparedStatement.setString(3, signupEntity.getPassword());
-            preparedStatement.setString(4, signupEntity.getConfirmPassword());
+            isSaved = true;
 
-            int result = preparedStatement.executeUpdate();
+            System.out.println("Data saved successfully: " + signupEntity);
 
-            System.out.println("Rows inserted: " + result);
+        } catch (PersistenceException e) {
 
-            if (result > 0) {
-                isSaved = true;
-                System.out.println("Data Saved Successfully");
+            if (et != null ) {
+                et.rollback();
             }
-            preparedStatement.close();
-            connection.close();
 
-        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
+
+        } finally {
+
+            if (em != null) {
+                em.close();
+            }
+
+            if (emf != null) {
+                emf.close();
+            }
         }
 
         return isSaved;

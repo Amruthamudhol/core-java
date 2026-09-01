@@ -4,32 +4,35 @@ import com.xworkz.userManagementSystem.dao.FeedbackDAO;
 import com.xworkz.userManagementSystem.dao.FeedbackDAOimpl;
 import com.xworkz.userManagementSystem.dto.FeedbackDTO;
 import com.xworkz.userManagementSystem.entity.FeedbackEntity;
-import lombok.*;
 
-
-@Getter
-@Setter
-@ToString
 public class FeedbackServiceImpl implements FeedbackService {
 
+    FeedbackDAO feedbackDAO = new FeedbackDAOimpl();
 
     @Override
     public boolean validateAndSave(FeedbackDTO feedbackDTO) {
+
         System.out.println("Running validateAndSave() in FeedbackServiceImpl");
-        System.out.println("feedBackDTO:"+feedbackDTO);
+        System.out.println("feedbackDTO : " + feedbackDTO);
 
-      if(feedbackDTO!=null){
-          System.out.println("valid dto");
+        if (feedbackDTO != null) {
 
-          FeedbackEntity feedbackEntity = new FeedbackEntity();
-          feedbackEntity.setName(feedbackDTO.getName());
-          feedbackEntity.setEmail(feedbackDTO.getEmail());
-          feedbackEntity.setMobile(feedbackDTO.getMobile());
-          feedbackEntity.setComment(feedbackDTO.getComment());
+            System.out.println("Valid DTO");
 
-          FeedbackDAO feedbackDAO = new FeedbackDAOimpl();
-          feedbackDAO.save(feedbackEntity);
-      }
-        return true;
+            FeedbackEntity feedbackEntity = new FeedbackEntity();
+
+            feedbackEntity.setName(feedbackDTO.getName());
+            feedbackEntity.setEmail(feedbackDTO.getEmail());
+            feedbackEntity.setMobile(feedbackDTO.getMobile());
+            feedbackEntity.setComment(feedbackDTO.getComment());
+
+            boolean saved = feedbackDAO.save(feedbackEntity);
+
+            System.out.println("DAO result : " + saved);
+
+            return saved;
+        }
+
+        return false;
     }
 }
