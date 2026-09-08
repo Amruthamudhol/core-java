@@ -5,8 +5,6 @@ import com.xworkz.userManagementSystem.service.SignInService;
 import com.xworkz.userManagementSystem.service.SignInServiceImpl;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,11 +21,9 @@ public class SignInServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         System.out.println("Running doPost in SignInServlet");
-
         // Get form data
         String userId = req.getParameter("userId");
         String password = req.getParameter("password");
@@ -42,6 +38,7 @@ public class SignInServlet extends HttpServlet {
 
         // Validate login
         boolean valid = signInService.validateAndSave(signInDTO);
+
         // Request Scope
         req.setAttribute("reqData", "This is request scope data");
 
@@ -49,23 +46,27 @@ public class SignInServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         if (valid) {
-
             String msg = userId + " Signed in successfully..";
+
+            // Store data in session
             session.setAttribute("userId", userId);
             session.setAttribute("message", msg);
 
             System.out.println("Login successful");
+
+            // Go to next page
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/Home.jsp");
+            dispatcher.forward(req, resp);
 
         } else {
 
             String msg = userId + " signed in failed..";
             session.setAttribute("message", msg);
             System.out.println("Login failed");
+
+            // Stay on SignIn page
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
+            dispatcher.forward(req, resp);
         }
-
-
-        // Forward to SignIn.jsp
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
-        dispatcher.forward(req, resp);
     }
 }

@@ -20,8 +20,7 @@ public class SignupServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         System.out.println("Running doPost in SignupServlet");
 
@@ -39,26 +38,27 @@ public class SignupServlet extends HttpServlet {
 
         // Invoke service
         SignupService signupService = new SignupServiceImpl();
-       boolean saved = signupService.validateAndSave(signupDTO);
+        boolean saved = signupService.validateAndSave(signupDTO);
 
         // Set DTO in request
         req.setAttribute("signupDTO", signupDTO);
-        if (saved) {
 
+        if (saved) {
             // Success message
             String msg = userId + " Account created successfully..";
             req.setAttribute("message", msg);
 
-            // Servlet chaining
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/Signup.jsp");
+            // Send data to next page
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/SignupSuccess.jsp");
             dispatcher.forward(req, resp);
-        }else {
+
+        } else {
+
             // Failure message
             String msg = userId + " Account creation failed..";
             req.setAttribute("message", msg);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/SignIn.jsp");
             dispatcher.forward(req, resp);
         }
-
     }
 }

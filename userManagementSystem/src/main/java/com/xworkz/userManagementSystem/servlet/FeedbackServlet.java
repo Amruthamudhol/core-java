@@ -16,13 +16,17 @@ import java.io.IOException;
 
 @WebServlet(loadOnStartup = 1, urlPatterns = "/feedback")
 public class FeedbackServlet extends HttpServlet {
+
     public FeedbackServlet() {
         System.out.println("FeedbackServlet created");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         System.out.println("Running doPost in FeedbackServlet");
+
+        // Get form data
         String name = req.getParameter("name");
         String email = req.getParameter("email");
         String mobile = req.getParameter("mobile");
@@ -36,36 +40,36 @@ public class FeedbackServlet extends HttpServlet {
         // DTO creation
         FeedbackDTO feedbackDTO = new FeedbackDTO(name, email, mobile, comment);
 
-        //invoking service
+        // Invoking service
         FeedbackService feedbackService = new FeedbackServiceImpl();
-        boolean saved=feedbackService.validateAndSave(feedbackDTO);
 
-        // Servlet chaining
+        boolean saved = feedbackService.validateAndSave(feedbackDTO);
+
+        // Set DTO in request
         req.setAttribute("feedbackDTO", feedbackDTO);
+
+        // Create Cookie
         Cookie cookie = new Cookie("x-workz", SecureRandomCharacterGenerator.generateRandomString(10));
-
-        cookie.setMaxAge(365);
-        cookie.setDomain("localhost");
-
+        cookie.setMaxAge(365 * 24 * 60 * 60);
         resp.addCookie(cookie);
-        if(saved){
+
+        if (saved) {
             // Success message
             String msg = name + " Feedback was sent Successfully..";
             req.setAttribute("message", msg);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/Feedback.jsp");
 
+            // Go to next page
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/FeedbackSuccess.jsp");
+            dispatcher.forward(req, resp);
 
-        }
-        else {
+        } else {
+
             // Failure message
             String msg = name + " Feedback was not sent Successfully..";
             req.setAttribute("message", msg);
-
+            // Stay on Feedback page
             RequestDispatcher dispatcher = req.getRequestDispatcher("/Feedback.jsp");
             dispatcher.forward(req, resp);
         }
-
-
-
     }
 }
