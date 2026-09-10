@@ -4,6 +4,10 @@ import com.xworkz.userManagementSystem.dao.SignInDAO;
 import com.xworkz.userManagementSystem.dao.SignInDAOimpl;
 import com.xworkz.userManagementSystem.dto.SignInDTO;
 import com.xworkz.userManagementSystem.entity.SignInEntity;
+import com.xworkz.userManagementSystem.util.ValidationUtil;
+
+import javax.validation.ConstraintViolation;
+import java.util.Set;
 
 public class SignInServiceImpl implements SignInService {
 
@@ -15,10 +19,14 @@ public class SignInServiceImpl implements SignInService {
         System.out.println("Running validateAndSave() in SignInServiceImpl");
         System.out.println("signInDTO : " + signInDTO);
 
-        if (signInDTO != null) {
+        Set<ConstraintViolation<SignInDTO>> validation = ValidationUtil.getValidator().validate(signInDTO);
+        System.out.println("Validation count : " + validation.size());
 
-            System.out.println("Valid DTO");
+        if (validation.isEmpty()) {
 
+            System.out.println("DTO validation successful");
+
+            // DTO -> Entity
             SignInEntity signInEntity = new SignInEntity();
 
             signInEntity.setUserId(signInDTO.getUserId());
@@ -29,6 +37,7 @@ public class SignInServiceImpl implements SignInService {
             System.out.println("DAO result : " + saved);
 
             return saved;
+
         }
 
         return false;

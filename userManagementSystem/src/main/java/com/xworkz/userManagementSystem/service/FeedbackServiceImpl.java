@@ -4,6 +4,10 @@ import com.xworkz.userManagementSystem.dao.FeedbackDAO;
 import com.xworkz.userManagementSystem.dao.FeedbackDAOimpl;
 import com.xworkz.userManagementSystem.dto.FeedbackDTO;
 import com.xworkz.userManagementSystem.entity.FeedbackEntity;
+import com.xworkz.userManagementSystem.util.ValidationUtil;
+
+import javax.validation.ConstraintViolation;
+import java.util.Set;
 
 public class FeedbackServiceImpl implements FeedbackService {
 
@@ -15,10 +19,13 @@ public class FeedbackServiceImpl implements FeedbackService {
         System.out.println("Running validateAndSave() in FeedbackServiceImpl");
         System.out.println("feedbackDTO : " + feedbackDTO);
 
-        if (feedbackDTO != null) {
+        Set<ConstraintViolation<FeedbackDTO>> validation = ValidationUtil.getValidator().validate(feedbackDTO);
+        System.out.println("Validation count : " + validation.size());
 
-            System.out.println("Valid DTO");
+        if (validation.isEmpty()) {
+            System.out.println("DTO validation successful");
 
+            // DTO -> Entity
             FeedbackEntity feedbackEntity = new FeedbackEntity();
 
             feedbackEntity.setName(feedbackDTO.getName());
@@ -31,8 +38,10 @@ public class FeedbackServiceImpl implements FeedbackService {
             System.out.println("DAO result : " + saved);
 
             return saved;
+
         }
 
         return false;
     }
+
 }

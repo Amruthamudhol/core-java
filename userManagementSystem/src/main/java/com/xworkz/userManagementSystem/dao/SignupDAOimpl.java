@@ -1,6 +1,7 @@
 package com.xworkz.userManagementSystem.dao;
 
 import com.xworkz.userManagementSystem.entity.SignupEntity;
+import com.xworkz.userManagementSystem.util.EntityManagerFactoryUtil;
 
 import javax.persistence.*;
 
@@ -14,43 +15,32 @@ public class SignupDAOimpl implements SignupDAO {
 
         boolean isSaved = false;
 
-        EntityManagerFactory emf = null;
         EntityManager em = null;
         EntityTransaction et = null;
 
         try {
-
-            emf = Persistence.createEntityManagerFactory("user_management_system");
-            em = emf.createEntityManager();
+            em = EntityManagerFactoryUtil.getEmf().createEntityManager();
             et = em.getTransaction();
             et.begin();
-
             em.persist(signupEntity);
             et.commit();
 
             isSaved = true;
-
             System.out.println("Data saved successfully: " + signupEntity);
 
         } catch (PersistenceException e) {
 
-            if (et != null ) {
-                et.rollback();
-            }
-
             e.printStackTrace();
 
+            if (et != null) {
+                et.rollback();
+            }
         } finally {
 
             if (em != null) {
                 em.close();
             }
-
-            if (emf != null) {
-                emf.close();
-            }
         }
-
         return isSaved;
     }
 }
