@@ -4,6 +4,8 @@ import com.xworkz.userManagementSystem.entity.SignupEntity;
 import com.xworkz.userManagementSystem.util.EntityManagerFactoryUtil;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 
 public class SignupDAOimpl implements SignupDAO {
 
@@ -42,5 +44,28 @@ public class SignupDAOimpl implements SignupDAO {
             }
         }
         return isSaved;
+    }
+
+
+    @Override
+    public List<SignupEntity> readAllSignupEntities() {
+
+        System.out.println("Invoking readAllSignupEntities : Dao");
+
+        try {
+
+            List<SignupEntity> signupEntities =
+                    EntityManagerFactoryUtil.getEmf().createEntityManager().createNamedQuery("getAllSignupEntities")
+                            .getResultList();
+
+            System.out.println("DAO result : " + signupEntities);
+            return signupEntities;
+
+        } catch (Exception exception) {
+
+            exception.printStackTrace();
+        }
+
+        return Collections.emptyList();
     }
 }

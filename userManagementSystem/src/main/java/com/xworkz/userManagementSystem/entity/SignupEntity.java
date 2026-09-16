@@ -8,9 +8,11 @@ import javax.persistence.*;
 @Table(name = "signup")
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
+
+@NamedQuery(name = "getAllSignupEntities", query = "select s from SignupEntity s")
 public class SignupEntity {
 
     @Id

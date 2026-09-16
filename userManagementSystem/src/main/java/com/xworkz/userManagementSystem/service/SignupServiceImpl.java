@@ -7,7 +7,10 @@ import com.xworkz.userManagementSystem.entity.SignupEntity;
 import com.xworkz.userManagementSystem.util.ValidationUtil;
 
 import javax.validation.ConstraintViolation;
+import java.util.Collections;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SignupServiceImpl implements SignupService {
 
@@ -43,4 +46,27 @@ public class SignupServiceImpl implements SignupService {
 
             return false;
         }
+
+
+
+
+    @Override
+    public List<SignupDTO> getAllSignupDto() {
+        List<SignupEntity> signupEntities = signupDAO.readAllSignupEntities();
+        System.out.println("Signup Entities : " + signupEntities);
+
+        if (signupEntities != null) {
+
+            return signupEntities.stream()
+                    .map(entity -> new SignupDTO(
+                            entity.getUserId(),
+                            entity.getEmail(),
+                            entity.getPassword(),
+                            entity.getConfirmPassword()
+                    ))
+                    .collect(Collectors.toList());
+        }
+
+        return Collections.emptyList();
+    }
     }

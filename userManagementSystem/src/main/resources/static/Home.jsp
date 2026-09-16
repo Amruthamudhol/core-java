@@ -66,6 +66,10 @@
 
     <a href="index.html">Back to Home</a>
 
+    <a href="${pageContext.request.contextPath}/ReadAllSinupEntity">
+        Read All Signup
+    </a>
+
 </div>
 
 </body>

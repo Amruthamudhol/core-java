@@ -62,7 +62,6 @@
     <h1> Signup Successful</h1>
     <h2>${message}</h2>
     <div class="details">
-
         <p>
             <strong>User ID:</strong>
             ${signupDTO.userId}
