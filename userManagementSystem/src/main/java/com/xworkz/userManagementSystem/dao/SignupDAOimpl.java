@@ -68,4 +68,57 @@ public class SignupDAOimpl implements SignupDAO {
 
         return Collections.emptyList();
     }
+
+
+
+    @Override
+    public SignupEntity updateSignupById(String userId) {
+
+        System.out.println("Invoking updateSignupById : SignupDaoImpl");
+
+        EntityManager em = EntityManagerFactoryUtil.getEmf().createEntityManager();
+
+        SignupEntity entity = null;
+
+        try {
+            Query query = em.createQuery("select s from SignupEntity s where s.userId = :userId");
+            query.setParameter("userId", userId);
+            entity = (SignupEntity) query.getSingleResult();
+
+        } catch (PersistenceException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            if (em != null) {
+                em.close();
+            }
+        }
+
+        return entity;
+    }
+
+    @Override
+    public Boolean updateSignupDto(SignupEntity entity) {
+        EntityManager em = EntityManagerFactoryUtil.getEmf().createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(entity);
+            em.getTransaction().commit();
+
+            return true;
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+            if (em != null) {
+                em.getTransaction().rollback();
+            }
+            return false;
+
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 }

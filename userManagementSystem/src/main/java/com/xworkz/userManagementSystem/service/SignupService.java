@@ -7,4 +7,6 @@ import java.util.List;
 public interface SignupService {
     boolean validateAndSave(SignupDTO signupDTO);
     List<SignupDTO> getAllSignupDto();
+    SignupDTO updateSignupById(String userId);
+    String updateSignupDto(SignupDTO signupDto);
 }

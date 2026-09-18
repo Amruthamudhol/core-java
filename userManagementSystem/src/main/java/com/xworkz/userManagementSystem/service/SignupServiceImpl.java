@@ -52,7 +52,10 @@ public class SignupServiceImpl implements SignupService {
 
     @Override
     public List<SignupDTO> getAllSignupDto() {
-        List<SignupEntity> signupEntities = signupDAO.readAllSignupEntities();
+
+        List<SignupEntity> signupEntities =
+                signupDAO.readAllSignupEntities();
+
         System.out.println("Signup Entities : " + signupEntities);
 
         if (signupEntities != null) {
@@ -68,5 +71,66 @@ public class SignupServiceImpl implements SignupService {
         }
 
         return Collections.emptyList();
+    }
+
+
+    @Override
+    public SignupDTO updateSignupById(String userId) {
+
+        System.out.println("Invoking updateSignupById : Service " + userId);
+
+        SignupDTO signupDto = null;
+
+        SignupEntity entity = signupDAO.updateSignupById(userId);
+
+        if (entity != null) {
+            signupDto = new SignupDTO();
+
+            signupDto.setUserId(entity.getUserId());
+            signupDto.setEmail(entity.getEmail());
+            signupDto.setPassword(entity.getPassword());
+            signupDto.setConfirmPassword(entity.getConfirmPassword());
+        }
+
+        return signupDto;
+    }
+
+
+
+    @Override
+    public String updateSignupDto(SignupDTO signupDto) {
+        String isUpdated = null;
+        if (signupDto != null) {
+
+            Set<ConstraintViolation<SignupDTO>> violations = ValidationUtil.getValidator().validate(signupDto);
+            System.out.println(violations);
+
+            if (violations.isEmpty()) {
+                SignupEntity entity = signupDAO.updateSignupById(signupDto.getUserId());
+
+                if (entity != null) {
+                    entity.setEmail(signupDto.getEmail());
+                    entity.setPassword(signupDto.getPassword());
+                    entity.setConfirmPassword(signupDto.getConfirmPassword());
+
+                    System.out.println("Entity data in Service : " + entity);
+                    Boolean check = signupDAO.updateSignupDto(entity);
+
+                    if (check) {
+                        isUpdated = "Updated";
+                    } else {
+                        isUpdated = "Not Updated";
+                    }
+
+                } else {
+                    isUpdated = "User not found";
+                }
+
+            } else {
+                isUpdated = "Invalid DTO";
+            }
+        }
+
+        return isUpdated;
     }
     }

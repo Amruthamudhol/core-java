@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -73,9 +74,7 @@
     <div class="card shadow-lg">
 
         <div class="card-body p-0">
-
             <div class="table-responsive">
-
                 <table class="table table-bordered table-hover mb-0">
 
                     <thead>
@@ -92,21 +91,16 @@
                     <c:forEach items="${signupList}" var="signup">
 
                         <tr>
-                            <td class="fw-bold">
-                                ${signup.userId}
-                            </td>
+                            <td class="fw-bold"> ${signup.userId} </td>
+                            <td> ${signup.email}</td>
 
-                            <td>
-                                ${signup.email}
-                            </td>
+                            <td class="password"> ${signup.password}  </td>
 
-                            <td class="password">
-                                ${signup.password}
-                            </td>
+                            <td class="password"> ${signup.confirmPassword}</td>
 
-                            <td class="password">
-                                ${signup.confirmPassword}
-                            </td>
+                            <td>  <a href="updateSignupById?userId=${signup.userId}"> Update </a></td>
+                            <td>  <a href="deleteSignupById?userId=${signup.userId}"> delete </a></td>
+
                         </tr>
 
                     </c:forEach>
