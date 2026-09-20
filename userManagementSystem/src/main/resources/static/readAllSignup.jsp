@@ -117,9 +117,9 @@
     <div class="text-center mt-4">
 
         <a href="${pageContext.request.contextPath}/Signup.jsp"
-           class="btn btn-back px-4 py-2">
-            ← Back to Signup
-        </a>
+               class="btn btn-back px-4 py-2">
+                &larr; Back to Signup
+            </a>
 
     </div>
 

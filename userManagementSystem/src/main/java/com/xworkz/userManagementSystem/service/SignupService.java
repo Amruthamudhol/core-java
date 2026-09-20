@@ -9,4 +9,5 @@ public interface SignupService {
     List<SignupDTO> getAllSignupDto();
     SignupDTO updateSignupById(String userId);
     String updateSignupDto(SignupDTO signupDto);
+    Boolean deleteSignupById(String userId);
 }

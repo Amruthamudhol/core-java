@@ -9,6 +9,6 @@ public interface SignupDAO {
     List<SignupEntity> readAllSignupEntities();
     SignupEntity updateSignupById(String userId);
     Boolean updateSignupDto(SignupEntity signupEntity);
-  //  Boolean deleteSignupById(String userId);
+    Boolean deleteSignupById(String userId);
 
 }

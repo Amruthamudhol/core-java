@@ -133,4 +133,12 @@ public class SignupServiceImpl implements SignupService {
 
         return isUpdated;
     }
+
+
+
+    @Override
+    public Boolean deleteSignupById(String userId) {
+        System.out.println("Invoking deleteSignupById : service " + userId);
+        return signupDAO.deleteSignupById(userId);
+    }
     }

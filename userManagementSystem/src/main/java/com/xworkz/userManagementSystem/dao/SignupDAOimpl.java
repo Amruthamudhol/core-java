@@ -70,7 +70,6 @@ public class SignupDAOimpl implements SignupDAO {
     }
 
 
-
     @Override
     public SignupEntity updateSignupById(String userId) {
 
@@ -121,4 +120,47 @@ public class SignupDAOimpl implements SignupDAO {
             }
         }
     }
+
+
+    @Override
+    public Boolean deleteSignupById(String userId) {
+
+        System.out.println("Invoking deleteSignupById : Dao " + userId);
+        Boolean isDelete = false;
+
+        EntityManager em = null;
+        EntityTransaction et = null;
+
+        try {
+
+            em = EntityManagerFactoryUtil.getEmf().createEntityManager();
+            et = em.getTransaction();
+            et.begin();
+
+            Query query = em.createQuery("select s from SignupEntity s where s.userId = :userId");
+            query.setParameter("userId", userId);
+            SignupEntity entity = (SignupEntity) query.getSingleResult();
+
+            if (entity != null) {
+                em.remove(entity);
+                et.commit();
+                isDelete = true;
+            }
+
+        } catch (PersistenceException p) {
+            p.printStackTrace();
+            if (et != null ) {
+                et.rollback();
+            }
+
+        } finally {
+
+            if (em != null) {
+                em.close();
+            }
+        }
+
+        return isDelete;
+    }
+
 }
